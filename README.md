@@ -1,24 +1,65 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Ruby version: ruby 2.5.3
 
-Things you may want to cover:
+# Generate new project
 
-* Ruby version
+```ruby
+rails new demo_rails_mongodb --skip-active-record --api -C
+```
 
-* System dependencies
+# Add mongoid gem
 
-* Configuration
+* [mongoid](https://github.com/mongodb/mongoid)
 
-* Database creation
+```ruby
+gem 'mongoid', '~> 7.0.2'
+```
 
-* Database initialization
+create `config/mongoid.yml`
 
-* How to run the test suite
+```ruby
+rails g mongoid:config
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+# Add docker-compose
 
-* Deployment instructions
+```ruby
+# docker-compose.yml
+version: '3'
+services:
+  mongo:
+    image: mongo:4.1
+    container_name: mongo4
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./tmp/data/mongo/data:/data/db
+```
 
-* ...
+```ruby
+docker-compose up
+```
+
+# Create model & data
+
+### Scaffold
+
+```ruby
+rails generate scaffold book title:string author:string pages:integer
+```
+
+```ruby
+# rails c
+Book.create(title: "First", pages:20, author:"leon")
+```
+
+# View
+
+```ruby
+# rails s -p 4321
+http://localhost:4321/books
+```
+
+* [MongoDB 基礎入門教學：MongoDB Shell 篇](https://blog.gtwang.org/programming/getting-started-with-mongodb-shell-1/)
