@@ -62,4 +62,6 @@ Book.create(title: "First", pages:20, author:"leon")
 http://localhost:4321/books
 ```
 
+* [Mongoid](https://docs.mongodb.com/mongoid/current/)
+* [old mongoid doc](https://mongoid.github.io/old/en/mongoid/index.html)
 * [MongoDB 基礎入門教學：MongoDB Shell 篇](https://blog.gtwang.org/programming/getting-started-with-mongodb-shell-1/)
